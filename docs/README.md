@@ -1,7 +1,5 @@
 # pickture-perfect
 
-# pickture-perfect
-
 Milestone 1: Develop methods to aggregate Mechanical Turker response data (6 points total)
 * Develop method to identify bad workers (2 points)
 * Develop method to identify the best photo(s) in a set of similar photos (2 points)
