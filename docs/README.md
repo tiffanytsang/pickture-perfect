@@ -1,5 +1,7 @@
 # pickture-perfect
 
+**Part 2: Deliverable 1**
+
 Milestone 1: Develop methods to aggregate Mechanical Turker response data (6 points total)
 * Develop method to identify bad workers (2 points)
 * Develop method to identify the best photo(s) in a set of similar photos (2 points)
@@ -24,6 +26,8 @@ Milestone 4: Analyze results and produce a video (3 points total)
 * Compile results from Milestone 3 and produce a video as final deliverable (3 points)
 
 Total: 20 points
+
+---
 
 **Part 2: Deliverable 2**
 
