@@ -12,7 +12,7 @@ Milestone 2: Set up the HIT (7 points total)
 * Create three different HITs (using our three comparison methods) based on the same photoset
   1. X vs Y - Turker sees two images and picks the better one until the Turker has compared every combination of two images from the photoset (2 points)
   2. Subsets - Turker continuously picks subsets of the best images from the photoset until the best image is identified (2 points)
-  3. Rate - Turker rates the images from 1 to 10; images are then ordered by rating to determine the best image (1 point)
+  3. Rank - Turker ranks the images from 1 to 10, 1 = best and 10 = worst (1 point)
 * Upload HITs to Mechanical Turk and allow Turkers to work and make the results accessible to the requester (1 point)
 
 Milestone 3: Analyze the different comparison methods (4 points total)
