@@ -32,15 +32,19 @@ Total: 20 points
 **Part 2: Deliverable 2**
 
 * Raw data
-  * data/ directory
-  * one csv is included for each HIT design
+  * Stored in picture/ directory
+  * Each set of 10 pictures is stored under a subdirectory
 * Sample input/output for QC
-  * []
+  * All input/output is stored in data/HITx directory. x = 1, 2, or 3 depending on the HIT design
+  * Input: dummy data is stored in filename hitxdummy.csv. The negative images are stored under the NegImg1 and NegImg2 column
+  * Output: bad workers are output in file with name hitxunqualifiedworkers.csv
 * Sample input/output for aggregation
-  * []
+  * All input/output stored in data/HITx directory.
+  * Input: dummy data is stored in filename hitxdummy.csv. Each row in the CSV contains the HIT reponses from a unique MTurk worker, identified by numeric ID. The worker output is stored under appropriate columns.
+  * Output: best photo is output in file with name hitxbestphoto.csv
 * Code for QC
-  * src/ directory: files with the word QC
+  * Stored in src/ directory: files with name HITxQC.py
   * one file is included for each HIT design
 * Code for aggregation
-  * src/ directory: files with the word "Aggregation"
+  * Stored in src/ directory: files with name HITxAggregation.py
   * one file is included for each HIT design
