@@ -13,7 +13,7 @@ def get_ranked_images(df, bad_workers):
 
   #create dict of image URL to rating
   pictures = {}
-  for row in data.iterrows():
+  for row in df.iterrows():
     row = row[1]
     if row['WorkerID'] not in unqual:
       for i in range(1, 11):
@@ -35,7 +35,7 @@ def get_ranked_images(df, bad_workers):
     writer.writerow(['BestPhoto'])
     writer.writerow([ranked_pictures[0]])
 
-  return best_photo
+  return ranked_pictures
 
 
 def main():

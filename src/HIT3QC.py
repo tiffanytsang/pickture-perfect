@@ -21,11 +21,11 @@ def find_unqualified(df):
     for bad_worker in unqualified:
       writer.writerow([bad_worker])
 
-  return bad_workers
+  return unqualified
 
 def main():
   hit3_data = pd.read_csv('../data/HIT3/hit3dummy.csv')
-  bad_workers = identify_bad_workers(hit3_data)
+  bad_workers = find_unqualified(hit3_data)
 
 if __name__ == '__main__':
   main()
