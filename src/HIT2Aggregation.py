@@ -23,13 +23,19 @@ def aggregate_data(hit2_data, bd):
 		if value > max_score:
 			max_score = value
 			best_photo = key
+
+	#write bad workers to csv
+	with open('../data/HIT2/hit2bestphoto.csv', 'w') as f:
+		writer = csv.writer(f,delimiter=',')
+		writer.writerow(['BestPhoto'])
+		writer.writerow([best_photo])
+
 	return best_photo
 
 def main():
 	hit2_data = pd.read_csv('../data/HIT2/hit2dummy.csv')
 	bad_workers = pd.read_csv('../data/HIT2/hit2unqualifiedworkers.csv')
 	best_photo = aggregate_data(hit2_data, bad_workers)
-	print("Best photo from HIT 2", best_photo)
 
 if __name__ == '__main__':
 	main()
