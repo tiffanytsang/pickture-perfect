@@ -4,14 +4,14 @@ import csv
 #output bad workers
 def identify_bad_workers(hit2_data):
 
-	bad_workers = []
+	bad_workers = set()
 
 	#identify bad workers
 	for index, row in hit2_data.iterrows():
 		if (row['Chosen1'] == 9 or row['Chosen1'] == 10
 			or row['Chosen2'] == 9 or row['Chosen2'] == 10
-			or row['Chosen3'] == 9 or row['Chosen2'] == 10):
-			bad_workers.append(row['WorkerID'])
+			or row['Chosen3'] == 9 or row['Chosen3'] == 10):
+			bad_workers.add(row['WorkerID'])
 
 	#write bad workers to csv
 	with open('../data/HIT2/hit2unqualifiedworkers.csv', 'w') as f:
