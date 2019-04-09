@@ -24,7 +24,7 @@ def aggregate_data(hit2_data, bd):
 			max_score = value
 			best_photo = key
 
-	#write bad workers to csv
+	#write best photo to csv
 	with open('../data/HIT2/hit2bestphoto.csv', 'w') as f:
 		writer = csv.writer(f,delimiter=',')
 		writer.writerow(['BestPhoto'])
