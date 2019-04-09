@@ -2,14 +2,14 @@ import pandas as pd
 import csv
 
 #output bad workers
-def identify_bad_workers(hit2data):
+def identify_bad_workers(hit2_data):
 
 	bad_workers = []
 
 	#identify bad workers
-	for index, row in hit2data.iterrows():
-		if (row['Chosen1'] == 9 or row['Chosen1'] == 10 
-			or row['Chosen2'] == 9 or row['Chosen2'] == 10 
+	for index, row in hit2_data.iterrows():
+		if (row['Chosen1'] == 9 or row['Chosen1'] == 10
+			or row['Chosen2'] == 9 or row['Chosen2'] == 10
 			or row['Chosen3'] == 9 or row['Chosen2'] == 10):
 			bad_workers.append(row['WorkerID'])
 
@@ -21,10 +21,10 @@ def identify_bad_workers(hit2data):
 			writer.writerow([bad_worker])
 
 	return bad_workers
-	
+
 def main():
-	hit2data = pd.read_csv('../data/HIT2/hit2dummy.csv')
-	bad_workers = identify_bad_workers(hit2data)
+	hit2_data = pd.read_csv('../data/HIT2/hit2dummy.csv')
+	bad_workers = identify_bad_workers(hit2_data)
 
 if __name__ == '__main__':
 	main()
