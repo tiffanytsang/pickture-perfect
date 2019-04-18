@@ -79,10 +79,10 @@ Characteristics of Bad (low aesthetic quality) images include but are not limite
 * Over/undersaturated
 * Discolored
 * If there are people in the image, they:
-* Have their eyes closed
-* Have red-eye
-* Aren’t looking at the camera
-* Are difficult to see
+  * Have their eyes closed
+  * Have red-eye
+  * Aren’t looking at the camera
+  * Are difficult to see
 
 ---
 
