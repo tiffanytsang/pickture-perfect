@@ -1,0 +1,9 @@
+1. create a folder with unique group name
+2. Mess up two images as follows: 
+  Blur: Set about 30% from the left end (Blurry)
+  Adjust colors: Hit any one of the Swap colors buttons
+3. Label good images as follows:
+  groupname_image1, groupname_image2, etc. 
+  or groupname_neg1, groupname_neg2
+
+  
