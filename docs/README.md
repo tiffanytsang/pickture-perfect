@@ -113,3 +113,5 @@ For each of the three HIT designs, we write aggregation code to identify the bes
 * Ranking - We will calculate the average ranking for each image and designate the one with the highest average ranking as the best image.
 
 The best photo in a set will be output in a csv file.
+
+For Milestone 3, we will compare the differences in the best images found between the 3 HIT designs. We will compare them to our notions of a best image. To do this, we will look through the photos and tag the photos that we think are the best image. The code will be a simple script that counts these differences.
