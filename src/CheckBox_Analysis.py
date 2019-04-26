@@ -10,9 +10,10 @@ def select_unqualified_workers(df):
         row = row[1]
         worker_id = row['WorkerId']
         url = row['Input.img_url']
-        score, count = get_score(row)
+        good, bad = get_score(row)
+        tot_votes = good + bad
         neg = 'neg' in url
-        if ((neg and score > 0) or count > 4):
+        if ((neg and good - bad > 0) or tot_votes > 4):
             worker_set.add(worker_id)
         no_people = row['Answer.radios.noPeople']
         people_checked = row['Answer.checkboxes.7'] or row['Answer.checkboxes.8']
@@ -20,40 +21,47 @@ def select_unqualified_workers(df):
             worker_set.add(worker_id)
     return worker_set
 
-#returns an (int, int) of score, number of Trues
+#returns an (int, int) of good votes, bad votes
 def get_score(row):
-    score = 0
-    count = 0
+    good = 0
+    bad = 0
     for i in range(1, 9):
         vote = row['Answer.checkboxes.' + str(i)]
         if (vote):
             if (i % 2 == 1):
-                score += 1
+                good += 1
             else:
-                score -= 1
-            count += 1
-    return score, count
+                bad += 1
+    return good, bad
 
 #gets average score for each image, excluding bad workers
 def get_scores(df, unqual):
     urls = {}
     for row in df.iterrows():
         row = row[1]
-        worker_id = row['Input.WorkerId']
+        worker_id = row['WorkerId']
         if worker_id in unqual:
             continue
         url = row['Input.img_url']
-        score = get_score(row)
+        good, bad = get_score(row)
         if url in urls:
-            urls[url] += score
+            urls[url][0] += good
+            urls[url][1] += bad
         else:
-            urls[url] = score
+            urls[url] = [good, bad]
+    for (k, v) in urls.items():
+        urls[k] = (v[0] - v[1] + 1) / (v[1] + 1)
     return urls
+
+def sorted_urls(urls):
+    return sorted(urls, key=lambda key: urls[key])
 
 def main():
     filename = '../data/checkbox/' + sys.argv[1]
     df = pd.read_csv(filename)
-    print(select_unqualified_workers(df))
+    unqual = select_unqualified_workers(df)
+    urls = get_scores(df, unqual)
+    print(sorted_urls(urls))
     return
 
 if __name__ == '__main__':
