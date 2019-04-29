@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 
-# usage: python CheckBox_Analysis.py
+# usage: python CheckBox_Analysis.py [filename.csv]
 
 #returns set of bad worker Ids
 def select_unqualified_workers(df):
@@ -57,11 +57,14 @@ def sorted_urls(urls):
     return sorted(urls, key=lambda key: urls[key])
 
 def main():
-    filename = '../data/checkbox/' + sys.argv[1]
+    csv = sys.argv[1]
+    filename = '../data/checkbox_input/' + csv
     df = pd.read_csv(filename)
     unqual = select_unqualified_workers(df)
     urls = get_scores(df, unqual)
-    print(sorted_urls(urls))
+    out_df = sorted_urls(urls)
+    out_filename = csv ''
+    out_df.to_csv('../data/checkbox_output/' , index=False)
     return
 
 if __name__ == '__main__':
