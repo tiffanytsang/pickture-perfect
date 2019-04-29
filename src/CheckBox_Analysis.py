@@ -54,17 +54,19 @@ def get_scores(df, unqual):
     return urls
 
 def sorted_urls(urls):
-    return sorted(urls, key=lambda key: urls[key])
+    l = sorted(urls, key=lambda key: urls[key])
+    l.reverse()
+    return l
 
 def main():
-    csv = sys.argv[1]
-    filename = '../data/checkbox_input/' + csv
-    df = pd.read_csv(filename)
+    filename = sys.argv[1]
+    input = '../data/checkbox_input/' + filename
+    df = pd.read_csv(input)
     unqual = select_unqualified_workers(df)
     urls = get_scores(df, unqual)
-    out_df = sorted_urls(urls)
-    out_filename = csv ''
-    out_df.to_csv('../data/checkbox_output/' , index=False)
+    out_df = pd.DataFrame(sorted_urls(urls), columns=['img_url'])
+    output = '../data/checkbox_output/' + filename.split('_')[0] + '_output.csv'
+    out_df.to_csv(output, index=False)
     return
 
 if __name__ == '__main__':
