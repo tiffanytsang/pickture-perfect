@@ -57,7 +57,12 @@ def main():
         pct = get_unqualified_pct(df)
         d[file] = pct
         reasons_for_rejection(df, reasons_dict)
+
     print(d)
+    sizes = [50, 220, 360, 220, 50, 440]
+    dqdf = pd.DataFrame(list(zip(d.values(), sizes)),
+        columns=['percentages','sizes'])
+    print(dqdf.corr())
     #print(reasons_dict)
 
     total_dq = sum(reasons_dict.values())
