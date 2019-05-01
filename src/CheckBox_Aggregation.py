@@ -53,10 +53,10 @@ def get_scores(df, unqual):
         urls[k] = (v[0] - v[1] + 1) / (v[1] + 1)
     return urls
 
-def sorted_urls(urls):
-    l = sorted(urls, key=lambda key: urls[key])
-    l.reverse()
-    return l
+def get_top_20_percent(urls):
+    size = Math.floor(len(urls) * 0.2)
+    print(size)
+    return urls[0:size]
 
 def main():
     filename = sys.argv[1]
