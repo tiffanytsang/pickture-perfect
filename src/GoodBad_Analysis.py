@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 
-# usage: python YesNo_Analysis.py [filename.csv]
+# usage: python GoodBad_Analysis.py [filename.csv]
 
 #returns set of bad worker Ids
 def select_unqualified_workers(df):
@@ -32,6 +32,8 @@ def get_scores(df, unqual):
             img_good_answer = row['Answer.img'+str(i)+'.good']
             if img_good_answer:
                 photo_score[input_img] = photo_score.setdefault(input_img,0) + 1
+            else:
+                photo_score[input_img] = photo_score.setdefault(input_img,0) + 0
             photo_total[input_img] = photo_total.setdefault(input_img,0) + 1
     for key, value in photo_score.items():
         photo_score[key] = (photo_score[key]+0.0)/photo_total[key]
