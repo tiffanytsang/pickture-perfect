@@ -60,6 +60,7 @@ def main():
 
     print(d)
     sizes = [50, 220, 360, 220, 50, 440]
+    #print(d.values())
     dqdf = pd.DataFrame(list(zip(d.values(), sizes)),
         columns=['percentages','sizes'])
     print(dqdf.corr())
