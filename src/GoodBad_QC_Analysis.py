@@ -30,6 +30,18 @@ def main():
         d[file] = pct
     print(d)
 
+    sizes = [50, 220, 360, 220, 50, 440]
+    dqdf = pd.DataFrame(list(zip(d.values(), sizes)),
+        columns=['percentages','sizes'])
+    print(dqdf.corr())
+
+
+    checkbox = [15.0, 2.649, 8.2192, 4.5045, 1.8868, 10.1124]
+    checkbox_goodbad_df = pd.DataFrame(list(zip(d.values(), checkbox)),
+        columns=['Good/Bad', 'CheckBox'])
+    print(checkbox_goodbad_df.corr())
+
+
     d1 = {k[:-12]:v for k,v in d.items()}
     series = pd.Series(d1)
     mean = series.mean()
