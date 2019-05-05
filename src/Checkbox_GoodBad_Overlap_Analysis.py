@@ -30,26 +30,27 @@ def findOverlap(cb_urls, gb_urls):
             overlap += 1
     return (float(overlap) / float(len(cb_urls)))
 
-def plot_graph(data):
-    series = pd.Series(data)
-    ax = series.plot(kind="bar")
+def plot_graph(series):
+    ax = series.plot(kind="bar", rot=0)
     t2 = ax.set_title("Percentage of overlap between Checkbox and GoodBad HIT")
     plt.tight_layout()
     plt.show()
 
 
 def main():
-    photosets = ["Budapest", "California", "CostaRica", "Greece", "Singapore", "SouthAfrica"]
+    photosets = ["Budapest", "Singapore", "Greece", "California", "CostaRica", "SouthAfrica"]
     data = {}
     for set in photosets:
-        checkbox_output = '/Users/killenberge/pickture-perfect/data/checkbox_output/' + set + "_output.csv"
-        good_bad_output = '/Users/killenberge/pickture-perfect/data/good_bad_output/' + set + "_output.csv"
+        checkbox_output = './data/checkbox_output/' + set + "_output.csv"
+        good_bad_output = './data/good_bad_output/' + set + "_output.csv"
         cb_df = pd.read_csv(checkbox_output)
         gb_df = pd.read_csv(good_bad_output)
         (cb_df, gb_df) = get_top_20_percent(cb_df, gb_df)
         data[set] = findOverlap(cb_df, gb_df)
-    print(data)
-    plot_graph(data)
+        series = pd.Series(data)
+    print(series.mean())
+    print(series.std())
+    plot_graph(series)
 
 
 if __name__ == '__main__':
