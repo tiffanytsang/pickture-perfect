@@ -4,12 +4,11 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-#returns top 20% of the output photos
+#returns top 5% of the output photos
 def get_top_5_percent(cb_df, gb_df):
     cb_urls = cb_df.values
     gb_urls = gb_df.values
     size = int(math.floor(max(len(cb_urls), len(gb_urls)) * 0.05))
-
     s = slice(0, size)
     return (cb_urls[s], gb_urls[s])
 
@@ -17,7 +16,9 @@ def get_top_5_percent(cb_df, gb_df):
 #returns fraction of overlap
 def findOverlap(cs_urls, hp_urls):
     overlap = 0
+    if len(cs_urls) == 0 or len(hp_urls) == 0: return 0
     for url in cs_urls:
+        print(hp_urls)
         if url in hp_urls:
             overlap += 1
     return (float(overlap) / float(len(cs_urls)))
