@@ -4,15 +4,6 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-#makes sure the output is the same size
-def resize(cb_df, gb_df):
-    if len(cb_df.index) != len(gb_df.index):
-        if len(cb_df.index) > len(gb_df.index):
-            cb_df = cb_df.drop(range(len(gb_df.index) + 1, len(cb_df.index)))
-        else:
-            gb_df = gb_df.drop(range(len(cb_df.index) + 1, len(gb_df.index)))
-    return (cb_df, gb_df)
-
 #returns top 20% of the output photos
 def get_top_20_percent(cb_df, gb_df):
     cb_urls = cb_df.values
@@ -23,6 +14,7 @@ def get_top_20_percent(cb_df, gb_df):
     return (cb_urls[s], gb_urls[s])
 
 
+#returns fraction of overlap
 def findOverlap(cb_urls, gb_urls):
     overlap = 0
     for url in cb_urls:
@@ -30,6 +22,7 @@ def findOverlap(cb_urls, gb_urls):
             overlap += 1
     return (float(overlap) / float(len(cb_urls)))
 
+#plots bar graph of country vs. overlap
 def plot_graph(series):
     ax = series.plot(kind="bar", rot=0)
     t2 = ax.set_title("Percentage of overlap between Checkbox and GoodBad HIT")
@@ -47,7 +40,7 @@ def main():
         gb_df = pd.read_csv(good_bad_output)
         (cb_df, gb_df) = get_top_20_percent(cb_df, gb_df)
         data[set] = findOverlap(cb_df, gb_df)
-        series = pd.Series(data)
+    series = pd.Series(data)
     print(series.mean())
     print(series.std())
     plot_graph(series)
