@@ -16,9 +16,9 @@ def get_top_5_percent(cb_df, gb_df):
 #returns fraction of overlap
 def findOverlap(cs_urls, hp_urls):
     overlap = 0
-    if len(cs_urls) == 0 or len(hp_urls) == 0: return 0
+    if len(cs_urls) == 0 or len(hp_urls) == 0: return overlap
     for url in cs_urls:
-        print(hp_urls)
+        print(url)
         if url in hp_urls:
             overlap += 1
     return (float(overlap) / float(len(cs_urls)))
@@ -42,7 +42,9 @@ def main():
         gb_df = pd.read_csv(good_bad_output)
         hp_df = pd.read_csv(handpicked)
         (cb_df, gb_df) = get_top_5_percent(cb_df, gb_df)
-        data[set] = {"checkbox": findOverlap(cb_df, hp_df), "good/bad": findOverlap(gb_df, hp_df)}
+        checkbox_overlap =  findOverlap(cb_df, hp_df)
+        good_bad_overlap = findOverlap(gb_df, hp_df)
+        data[set] = {"checkbox": checkbox_overlap, "good_bad": good_bad_overlap}
     series = pd.Series(data)
     print(series.mean())
     print(series.std())
